@@ -19,10 +19,10 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="age"><span>Age</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="surname"><span>Surname</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="age"><span>Age</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="user.login"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -30,13 +30,11 @@
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
                 <tr ng-repeat="patient in vm.patients track by patient.id">
                     <td><a ui-sref="patient-detail({id:patient.id})">{{patient.id}}</a></td>
-                    <td>{{patient.weight}}</td>
-                        <td>{{patient.age | date:'mediumDate'}}</td>
                     <td>{{patient.name}}</td>
                     <td>{{patient.surname}}</td>
-                    <td>
-                        {{patient.user.login}}
-                    </td>
+                    <td>{{patient.weight}}</td>
+                    <td>{{patient.age | date:'mediumDate'}}</td>
+                    <td>{{patient.user.login}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

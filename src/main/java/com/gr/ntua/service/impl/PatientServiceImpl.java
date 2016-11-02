@@ -21,7 +21,7 @@ import java.util.List;
 public class PatientServiceImpl implements PatientService{
 
     private final Logger log = LoggerFactory.getLogger(PatientServiceImpl.class);
-    
+
     @Inject
     private PatientRepository patientRepository;
 
@@ -39,14 +39,14 @@ public class PatientServiceImpl implements PatientService{
 
     /**
      *  Get all the patients.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Page<Patient> findAll(Pageable pageable) {
         log.debug("Request to get all Patients");
-        Page<Patient> result = patientRepository.findAll(pageable);
+        Page<Patient> result = patientRepository.findByUserIsCurrentUser(pageable);
         return result;
     }
 
@@ -56,7 +56,7 @@ public class PatientServiceImpl implements PatientService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public Patient findOne(Long id) {
         log.debug("Request to get Patient : {}", id);
         Patient patient = patientRepository.findOne(id);

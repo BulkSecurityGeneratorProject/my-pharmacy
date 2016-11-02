@@ -1,0 +1,116 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPatientLabel">Create or edit a Patient</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.patient.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.patient.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_weight">Weight</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                    ng-model="vm.patient.weight"
+                    required min="0.0" />
+            <div ng-show="editForm.weight.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.min" translate-value-min="0.0">
+                    This field should be more than 0.0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_age">Age</label>
+                <div class="input-group">
+                    <input id="field_age" type="text" class="form-control" name="age" uib-datepicker-popup="{{dateformat}}" ng-model="vm.patient.age" is-open="vm.datePickerOpenStatus.age"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('age')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.age.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.age.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.patient.name"
+                    required ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z]+$/" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="2">
+                    This field is required to be at least 2 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength">
+                    This field cannot be longer than 20 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.pattern" translate-value-pattern="^[A-z]+$">
+                    This field should follow pattern "^[A-z]+$".
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_surname">Surname</label>
+            <input type="text" class="form-control" name="surname" id="field_surname"
+                    ng-model="vm.patient.surname"
+                    required ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z]+$/" />
+            <div ng-show="editForm.surname.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.surname.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.surname.$error.minlength" translate-value-min="2">
+                    This field is required to be at least 2 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.surname.$error.maxlength">
+                    This field cannot be longer than 20 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.surname.$error.pattern" translate-value-pattern="^[A-z]+$">
+                    This field should follow pattern "^[A-z]+$".
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.patient.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

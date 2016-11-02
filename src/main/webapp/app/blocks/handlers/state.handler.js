@@ -32,11 +32,11 @@
                     Auth.authorize();
                 }
 
-                
+
             });
 
             var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-                var titleKey = 'myPharmacy' ;
+                var titleKey = 'myDosing' ;
 
                 // Set the page title key to the one configured in state or use default one
                 if (toState.data.pageTitle) {

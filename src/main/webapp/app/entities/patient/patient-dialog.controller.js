@@ -15,7 +15,10 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.users = User.query();
+
+        vm.users = User.get('User', ['$scope','$routeParams', function($scope, $routeParams) {
+            login = "user";
+        }]);
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -16,9 +16,12 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
 
-        vm.users = User.get('User', ['$scope','$routeParams', function($scope, $routeParams) {
-            login = "user";
-        }]);
+        var val = User.get({ login: "user"}, function() {
+            console.log(vm.users);
+        }); // get() returns a single entry
+
+        vm.users = [val];
+        vm.patient.user = val;
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

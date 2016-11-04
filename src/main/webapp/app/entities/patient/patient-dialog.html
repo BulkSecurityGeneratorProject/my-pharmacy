@@ -100,11 +100,12 @@
             </div>
         </div>
 
-        <div class="form-group">
+       <div class="form-group">
             <label for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" ng-model="vm.patient.user" ng-options="user as user.login for user in vm.users  track by user.id">
-                <option value=""></option>
-            </select>
+               <select ng-model="vm.patient.user"  name="user" id="field_user"  ng-options="user as user.login for user in vm.users  track by user.id" readonly>
+               </select>
+           </div>
+
         </div>
         <div ng-show="editForm.user.$invalid">
             <p class="help-block"

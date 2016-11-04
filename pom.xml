@@ -553,7 +553,7 @@
                     <url>jdbc:mysql://localhost:3306/myPharmacy</url>
                     <defaultSchemaName>myPharmacy</defaultSchemaName>
                     <username>root</username>
-                    <password></password>
+                    <password>a88888a</password>
                     <referenceUrl>hibernate:spring:com.gr.ntua.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&amp;hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>

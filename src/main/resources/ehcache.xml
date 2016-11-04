@@ -41,5 +41,9 @@
         timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="com.gr.ntua.domain.Drug"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

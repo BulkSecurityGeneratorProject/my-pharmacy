@@ -1,0 +1,53 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <span class="hipster img-responsive img-rounded"></span>
+        </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="alert alert-success">
+                        <p class="p4"> Please choose a patient: </p>
+                        <label for="field_patient">
+                            <select ng-model="patient" name="patient" id="field_patient" ng-options="patient as patient.surname  + ' ' + patient.name   for patient in vm.patients  track by patient.id" ng-change="vm.changedValue(patient)">
+                                <option value="" label=""></option>
+                            </select>
+                        </label>
+                        <p class="p4"> Please choose a drug: </p>
+                        <label for="field_drug">
+                            <select ng-model="drug" id="field_drug" ng-options="drug as drug.name for drug in vm.drugs track by drug.id" ng-change="vm.changedValue(drug)">
+                              <option value="" label=""></option>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="dynamicArea">
+                        <div id="Busulfan" class="desc" ng-if="drug.id === 1 && patient.id">
+                            <div class="form-group">
+                                <label class="control-label" for="field_dosage">Please insert the initial dosage of Busulfan </label>
+                                <input type="number" class="form-control" name="weight" id="field_dosage"
+                                       ng-model="patient.dosage"
+                                       required min="0.0" />
+                                <div ng-show="editForm.dosage.$invalid">
+                                    <p class="help-block"
+                                       ng-show="editForm.dosage.$error.required">
+                                        This field is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editForm.dosage.$error.min" translate-value-min="0.0">
+                                        This field should be more than 0.0.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="editForm.dosage.$error.number">
+                                        This field should be a number.
+                                    </p>
+                                </div>
+                            </div>
+
+                           
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>

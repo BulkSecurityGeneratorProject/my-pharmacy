@@ -9,8 +9,18 @@
 
     function stateConfig ($stateProvider) {
         $stateProvider.state('experiments', {
-            abstract: true,
-            parent: 'app'
+            parent: 'app',
+            url: '/experiment',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/experiments/experiments.html',
+                    controller: 'ExperimentController',
+                    controllerAs: 'vm'
+                }
+            }
         });
     }
 })();

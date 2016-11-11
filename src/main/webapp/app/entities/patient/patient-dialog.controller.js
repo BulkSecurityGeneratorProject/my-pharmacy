@@ -5,9 +5,9 @@
         .module('myPharmacyApp')
         .controller('PatientDialogController', PatientDialogController);
 
-    PatientDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Patient', 'User'];
+    PatientDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Principal', 'Patient', 'User'];
 
-    function PatientDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Patient, User) {
+    function PatientDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Principal, Patient, User) {
         var vm = this;
 
         vm.patient = entity;
@@ -15,14 +15,21 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
+        getAccount();
 
-        var val = User.get({ login: "user"}, function() {
-            console.log(vm.users);
-        }); // get() returns a single entry
+        function getAccount() {
+            Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.isAuthenticated = Principal.isAuthenticated;
+                var val = User.get({ login: account.login}, function() {
+                    console.log(vm.users);
+                }); // get() returns a single entry
+                vm.users = [val];
+                vm.patient.user = val;
 
-        vm.users = [val];
-        vm.patient.user = val;
-
+            });
+        }
+        
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });

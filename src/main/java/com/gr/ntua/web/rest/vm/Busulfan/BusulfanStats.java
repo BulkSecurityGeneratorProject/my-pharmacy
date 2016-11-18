@@ -5,6 +5,11 @@ package com.gr.ntua.web.rest.vm.Busulfan;
  */
 public class BusulfanStats {
 
+    private Double relativeTime1;
+    private Double relativeTime2;
+    private Double relativeTime3;
+    private Double relativeTime4;
+
     private Double AUCtotal;
     private Double AUCtotal243;
     private Double CL;
@@ -24,6 +29,38 @@ public class BusulfanStats {
         DoseAdjusted = doseAdjusted;
         this.kel = kel;
         this.t1_2 = t1_2;
+    }
+
+    public Double getRelativeTime1() {
+        return relativeTime1;
+    }
+
+    public void setRelativeTime1(Double relativeTime1) {
+        this.relativeTime1 = relativeTime1;
+    }
+
+    public Double getRelativeTime2() {
+        return relativeTime2;
+    }
+
+    public void setRelativeTime2(Double relativeTime2) {
+        this.relativeTime2 = relativeTime2;
+    }
+
+    public Double getRelativeTime3() {
+        return relativeTime3;
+    }
+
+    public void setRelativeTime3(Double relativeTime3) {
+        this.relativeTime3 = relativeTime3;
+    }
+
+    public Double getRelativeTime4() {
+        return relativeTime4;
+    }
+
+    public void setRelativeTime4(Double relativeTime4) {
+        this.relativeTime4 = relativeTime4;
     }
 
     public Double getAUCtotal() {

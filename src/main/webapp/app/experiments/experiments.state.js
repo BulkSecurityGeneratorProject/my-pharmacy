@@ -44,22 +44,36 @@
         ).state('experiments.result', {
             parent: 'experiments',
             url: '/experiment/result',
+            params: { experiment: null , stats:null },
             data: {
                 authorities: []
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/experiments/experiments.result.html',
-                    controller: 'ExperimentController',
+                    templateUrl: 'app/experiments/experiments-result.html',
+                    controller: 'ExperimentResultController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg'
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                x: null,
+                                y: null,
+                                xxs: [],
+                                yys: []
+                            }
+                        }
+                    }
                 }).result.then(function () {
                     $state.go('^', {}, {reload: false});
                 }, function () {
                     $state.go('^');
-                });
+                }
+                );
+
             }]
+
         })
     }})
 ();

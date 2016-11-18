@@ -30,8 +30,8 @@
 
         function onSaveSuccess (result) {
             console.log(result);
-            $state.go('experiments.result', angular.copy(result), { reload: true, inherit: true, notify: true });        }
-
+            $state.go('experiments.result', {experiment: result, stats: vm.stats});// { reload: true, inherit: true, notify: true });        }
+        }
         function onSaveError () {
             console.log("WHOOPS");
 

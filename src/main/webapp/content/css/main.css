@@ -334,4 +334,28 @@ ui bootstrap tweaks
 }
 
 
+#wrapper {
+
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+    width: 300px;
+    float:left; /* add this */
+    border-right: 1px solid #3e8f3e;
+}
+#second {
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+    width: 50%;
+    margin: 0 auto;
+    float:right; /* add this */
+
+}
+
+.paddingBetweenRows td,th
+{
+    padding:0 40px 0  40px;
+    text-align: center;
+}
+
+
 /* jhipster-needle-css-add-main JHipster will add new css style */

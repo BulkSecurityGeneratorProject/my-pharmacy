@@ -47,7 +47,7 @@
             url: '/user/:login',
             data: {
                 authorities: ['ROLE_ADMIN'],
-                pageTitle: 'myDosing'
+                pageTitle: 'myDosage'
             },
             views: {
                 'content@': {

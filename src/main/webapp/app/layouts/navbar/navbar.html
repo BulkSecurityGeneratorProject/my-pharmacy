@@ -9,7 +9,7 @@
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
                 <img class="logo-img" src="content/images/logo-jhipster.png"/>
-                <span>MyDosing</span> <span class="navbar-version">v{{VERSION}}</span>
+                <span>MyDosage</span> <span class="navbar-version">v{{VERSION}}</span>
             </a>
         </div>
         <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
@@ -35,7 +35,13 @@
                         <li ui-sref-active="active">
                             <a ui-sref="patient" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-user"></span>&nbsp;
-                                <span >Patient</span>
+                                <span >Patients</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="drug" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-scale"></span>&nbsp;
+                                <span >Drugs</span>
                             </a>
                         </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

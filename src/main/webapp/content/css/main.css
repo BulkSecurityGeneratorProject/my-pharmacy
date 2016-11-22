@@ -101,7 +101,7 @@ Main page styles
     display: inline-block;
     width: 347px;
     height: 497px;
-    background: url("../images/myDosingBig.png") no-repeat center top;
+    background: url("../images/myDosageBig.png") no-repeat center top;
     background-size: contain;
 }
 
@@ -114,7 +114,7 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
     .hipster {
-        background: url("../images/myDosingBig.png") no-repeat center top;
+        background: url("../images/myDosageBig.png") no-repeat center top;
         background-size: contain;
     }
 }
@@ -327,6 +327,32 @@ ui bootstrap tweaks
 .datetime-picker-dropdown > li.date-picker-menu div > table:focus,
 .uib-datepicker-popup  > li > div.uib-datepicker > table:focus {
     outline: none;
+}
+
+.divInline{
+    display: inline-block;
+}
+
+
+#wrapper {
+
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+    width: 300px;
+    float:left; /* add this */
+}
+#second {
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+    width: 50%;
+    margin: 0 auto;
+    float:right; /* add this */
+}
+
+.paddingBetweenRows td,th
+{
+    padding:0 40px 0  40px;
+    text-align: center;
 }
 
 

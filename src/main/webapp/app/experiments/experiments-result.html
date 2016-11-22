@@ -1,0 +1,115 @@
+<form name="exportForm">
+    <div ng-cloak class="alert alert-success" >
+        <h1>Results of Analysis</h1>
+        <p class="lead">Measurements of busulfan plasma levels</p>
+        <table class='paddingBetweenRows'>
+            <tr>
+                <th>Time of measurements</th>
+                <th>Relative time of measurement</th>
+                <th>Concentration levels</th>
+            </tr>
+            <tr>
+                <td><span>{{vm.stats.time1 | date: "hh:mm"}}</span></td>
+                <td>0.0</td>
+                <td><span>{{vm.stats.concentration1}}</span></td>
+            </tr>
+            <tr>
+                <td><span>{{vm.stats.time2 | date: "hh:mm"}}</span></td>
+                <td><span>{{vm.experiment.relativeTime1}}</span></td>
+                <td><span>{{vm.stats.concentration2}}</span></td>
+            </tr>
+            <tr>
+                <td><span>{{vm.stats.time3 | date: "hh:mm"}}</span></td>
+                <td><span>{{vm.experiment.relativeTime2}}</span></td>
+                <td><span>{{vm.stats.concentration3}}</span></td>
+            </tr>
+            <tr>
+                <td><span>{{vm.stats.time4 | date: "hh:mm"}}</span></td>
+                <td><span>{{vm.experiment.relativeTime3}}</span></td>
+                <td><span>{{vm.stats.concentration4}}</span></td>
+            </tr>
+            <tr>
+                <td><span>{{vm.stats.time5 | date: "hh:mm"}}</span></td>
+                <td><span>{{vm.experiment.relativeTime4}}</span></td>
+                <td><span>{{vm.stats.concentration5}}</span></td>
+            </tr>
+        </table>
+
+        <hr>
+        <div id="wrapper">
+            <div id="first">
+            <p class="lead">Measurements of FK parameters</p>
+            <dl class="dl-horizontal jh-entity-details">
+                <dt><span>AUCtrap</span></dt>
+                <dd>
+                    <span>{{vm.experiment.auctotal}}</span>
+                </dd>
+                <dt><span>kel</span></dt>
+                <dd>
+                    <span>{{vm.experiment.kel}}</span>
+                </dd>
+                <dt><span>t12</span></dt>
+                <dd>
+                    <span>{{vm.experiment.t1_2}}</span>
+                </dd>
+                <dt><span>katharsis</span></dt>
+                <dd>
+                    <span>{{vm.experiment.clkg}}</span>
+                </dd>
+                <dt><span>AucTotal</span></dt>
+                <dd>
+                    <span>{{vm.experiment.auctotal}}</span>
+                </dd>
+                <dt><span>AucTotal243</span></dt>
+                <dd>
+                    <span>{{vm.experiment.auctotal243}}</span>
+                </dd>
+            </dl>
+            </div>
+            <div id="second">
+                 <span><img ng-src="data:image/png;base64,{{vm.imgResult}}"  ></span>
+            </div>
+        </div>
+
+        <hr>
+
+        <p class="lead">Adjusted Busulfan Dosage</p>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span>Personalized Dosage</span></dt>
+            <dd>
+                <span>{{vm.experiment.doseAdjusted}}</span>
+            </dd>
+        </dl>
+       <!-- <dt><span>Recommended Dosage</span></dt>
+        <dd>
+            <div class="form-inline">
+            <input type="number" class="form-control" name="concentration2" id="field_concentration2"
+                   ng-model="vm.recommendedDosage" required min="0.0"/>
+            <div ng-show="editForm.concentration2.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.concentration2.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.concentration2.$error.min" translate-value-min="0.0">
+                    This field should be more than 0.0.
+                </p>
+                <p class="help-block"
+                   ng-show="editForm.concentration2.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+                </div>
+        </dd>-->
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Close</span>
+        </button>
+       <!-- <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-download"></span>&nbsp;<span>Export</span>
+        </button>-->
+    </div>
+</form>

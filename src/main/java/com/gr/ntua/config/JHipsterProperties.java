@@ -157,7 +157,7 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String from = "myPharmacy@localhost";
+        private String from = "mydosage@outlook.com";
 
         public String getFrom() {
             return from;
@@ -193,9 +193,9 @@ public class JHipsterProperties {
 
     public static class Swagger {
 
-        private String title = "myPharmacy API";
+        private String title = "myDosage API";
 
-        private String description = "myPharmacy API documentation";
+        private String description = "myDosage API documentation";
 
         private String version = "0.0.1";
 
@@ -364,7 +364,7 @@ public class JHipsterProperties {
 
             private int port = 2003;
 
-            private String prefix = "myPharmacy";
+            private String prefix = "myDosage";
 
             public boolean isEnabled() {
                 return enabled;

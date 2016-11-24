@@ -12,7 +12,6 @@
 
         vm.patient = entity;
         vm.previousState = previousState.name;
-
         var unsubscribe = $rootScope.$on('myPharmacyApp:patientUpdate', function(event, result) {
             vm.patient = result;
         });

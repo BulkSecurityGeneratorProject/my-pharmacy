@@ -96,7 +96,7 @@
                         entity: function () {
                             return {
                                 weight: null,
-                                age: null,
+                                age: new Date("Thu Jan 30 2000 01:50:00 GMT+0200 (EET)"),
                                 name: null,
                                 surname: null,
                                 id: null

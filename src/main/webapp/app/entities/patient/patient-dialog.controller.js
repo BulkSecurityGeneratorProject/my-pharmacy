@@ -12,8 +12,6 @@
 
         vm.patient = entity;
         vm.clear = clear;
-        vm.datePickerOpenStatus = {};
-        vm.openCalendar = openCalendar;
         vm.save = save;
         getAccount();
 
@@ -29,7 +27,7 @@
 
             });
         }
-        
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -55,12 +53,6 @@
 
         function onSaveError () {
             vm.isSaving = false;
-        }
-
-        vm.datePickerOpenStatus.age = false;
-
-        function openCalendar (date) {
-            vm.datePickerOpenStatus[date] = true;
         }
     }
 })();

@@ -17,4 +17,6 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
     @Query("select patient from Patient patient where patient.user.login = ?#{principal.username}")
     Page<Patient> findByUserIsCurrentUser(Pageable pageable);
 
+    @Query("select patient from Patient patient where patient.user.login = ?#{principal.username} and patient.id=?1")
+    Patient findOneWhereUserIsCurrentUser(Long id);
 }

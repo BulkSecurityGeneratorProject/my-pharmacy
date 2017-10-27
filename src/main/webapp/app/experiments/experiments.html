@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label"  for="field_concentration1">Please insert the time and concentration of Busulfan in patient's plasma:</label>
+                                <label class="control-label"  for="field_concentration1">Please insert the time and concentration of Busulfan in patient's plasma (mg/mL):</label>
                                 <div class="form-inline">
                                     <input type="time" class="form-control" name="time1" id="field_metric1" value="01:50"
                                            ng-model="vm.stats.time1" required/>
@@ -118,7 +118,7 @@
                             <div class="form-group">
                                 <div class="form-inline">
                                     <input type="time" class="form-control" name="time4" id="field_metric4" value="05:50"
-                                           required/>
+                                           ng-model="vm.stats.time4" required/>
                                     <input type="number" class="form-control" name="concentration4" id="field_concentration4"
                                            ng-model="vm.stats.concentration4" required min="0.0"/>
                                     <div ng-show="editForm.concentration4.$invalid">
@@ -141,7 +141,7 @@
                             <div class="form-group">
                                 <div class="form-inline">
                                     <input type="time" class="form-control" name="time5" id="field_metric5" value="07:50"
-                                           required/>
+                                           ng-model="vm.stats.time5" required/>
                                     <input type="number" class="form-control" name="concentration5" id="field_concentration5"
                                            ng-model="vm.stats.concentration5" required min="0.0"/>
                                     <div ng-show="editForm.concentration5.$invalid">

@@ -59,7 +59,7 @@ public class PatientServiceImpl implements PatientService{
     @Transactional(readOnly = true)
     public Patient findOne(Long id) {
         log.debug("Request to get Patient : {}", id);
-        Patient patient = patientRepository.findOne(id);
+        Patient patient = patientRepository.findOneWhereUserIsCurrentUser(id);
         return patient;
     }
 

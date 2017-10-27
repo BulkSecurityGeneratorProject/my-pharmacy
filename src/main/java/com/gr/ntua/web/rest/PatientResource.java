@@ -2,6 +2,7 @@ package com.gr.ntua.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.gr.ntua.domain.Patient;
+import com.gr.ntua.security.AuthoritiesConstants;
 import com.gr.ntua.service.PatientService;
 import com.gr.ntua.web.rest.util.HeaderUtil;
 import com.gr.ntua.web.rest.util.PaginationUtil;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -30,7 +32,7 @@ import java.util.Optional;
 public class PatientResource {
 
     private final Logger log = LoggerFactory.getLogger(PatientResource.class);
-        
+
     @Inject
     private PatientService patientService;
 
@@ -45,6 +47,7 @@ public class PatientResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<Patient> createPatient(@Valid @RequestBody Patient patient) throws URISyntaxException {
         log.debug("REST request to save Patient : {}", patient);
         if (patient.getId() != null) {
@@ -69,6 +72,7 @@ public class PatientResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<Patient> updatePatient(@Valid @RequestBody Patient patient) throws URISyntaxException {
         log.debug("REST request to update Patient : {}", patient);
         if (patient.getId() == null) {
@@ -91,6 +95,7 @@ public class PatientResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<List<Patient>> getAllPatients(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Patients");
@@ -109,8 +114,10 @@ public class PatientResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<Patient> getPatient(@PathVariable Long id) {
         log.debug("REST request to get Patient : {}", id);
+
         Patient patient = patientService.findOne(id);
         return Optional.ofNullable(patient)
             .map(result -> new ResponseEntity<>(
@@ -129,6 +136,7 @@ public class PatientResource {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
+    @Secured(AuthoritiesConstants.USER)
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         log.debug("REST request to delete Patient : {}", id);
         patientService.delete(id);

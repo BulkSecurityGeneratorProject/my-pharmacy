@@ -27,6 +27,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URISyntaxException;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -52,16 +54,20 @@ public class ExperimentResource {
 
         BusulfanStats busulfanStats = new BusulfanStats();
 
-        Period period = new Interval(busulfanVM.getTime1().getTime(), busulfanVM.getTime2().getTime()).toPeriod();
-        busulfanStats.setRelativeTime1(period.getHours()+period.getMinutes()/60.0);
+        System.out.println(busulfanVM.getTime1().getTime());
+        System.out.println(busulfanVM.getTime2().getTime());
+        Period period;
 
-        period = new Interval(busulfanVM.getTime1().getTime(), busulfanVM.getTime3().getTime()).toPeriod();
+        period = getPeriodinDate(busulfanVM.getTime1(), busulfanVM.getTime2());
+        busulfanStats.setRelativeTime1(period.getHours() + period.getMinutes() / 60.0);
+
+        period = getPeriodinDate(busulfanVM.getTime1(), busulfanVM.getTime3());
         busulfanStats.setRelativeTime2(period.getHours()+period.getMinutes()/60.0);
 
-        period = new Interval(busulfanVM.getTime1().getTime(), busulfanVM.getTime4().getTime()).toPeriod();
+        period = getPeriodinDate(busulfanVM.getTime1(), busulfanVM.getTime4());
         busulfanStats.setRelativeTime3(period.getHours()+period.getMinutes()/60.0);
 
-        period = new Interval(busulfanVM.getTime1().getTime(), busulfanVM.getTime5().getTime()).toPeriod();
+        period = getPeriodinDate(busulfanVM.getTime1(), busulfanVM.getTime5());
         busulfanStats.setRelativeTime4(period.getHours()+period.getMinutes()/60.0);
 
         Double AUC02 = busulfanStats.getRelativeTime1() * (busulfanVM.getConcentration1()+busulfanVM.getConcentration2())/2.0;
@@ -108,6 +114,19 @@ public class ExperimentResource {
             .body(busulfanStats);
     }
 
+    public static Period getPeriodinDate(Date date1, Date date2)
+    {
+        try {
+            return  new Interval(date1.getTime(), date2.getTime()).toPeriod();
+
+        }catch (IllegalArgumentException ex)
+        {
+            Calendar c = Calendar.getInstance();
+            c.setTime(date2);
+            c.add(Calendar.DATE, 1);
+            return new Interval(date1.getTime(), c.getTimeInMillis()).toPeriod();
+        }
+    }
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
 
@@ -157,7 +176,4 @@ public class ExperimentResource {
             throw new RuntimeException(e);
         }
     }
-
-
-
 }
